@@ -1,4 +1,4 @@
-# parsing_data_3m
+# Parsing the UMD Three Meter Sodium Geodynamo Experiment Data
 Scripts and functions necessary for working with 3M experiment data. Mostly Matlab code.
 
 ## Getting and preparing data
