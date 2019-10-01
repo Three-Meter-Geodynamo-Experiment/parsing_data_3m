@@ -28,9 +28,9 @@ The script should draw a plot with marked times so you can check if everything i
 
 
 ## Information about the raw data
--[Rotating computer pinout](https://docs.google.com/spreadsheets/d/1QK5RuoAz3mkU4ewodRvsoY-TPS1rK52lsijLz8kj0Iw/edit#gid=0)
--[Control.log information](https://docs.google.com/spreadsheets/d/1iJDTR6pUdUj5UHCuwuZnz-ozIG0QwWEpun8C-yHjmEk/edit#gid=0)
--[Lab Frame sensors](https://docs.google.com/spreadsheets/d/12Y85VpWkbLblPkNm32mU3hsVgKqCMDhEJuQSiBuFi4o/edit#gid=0)
+- [Rotating computer pinout](https://docs.google.com/spreadsheets/d/1QK5RuoAz3mkU4ewodRvsoY-TPS1rK52lsijLz8kj0Iw/edit#gid=0)
+- [Control.log information](https://docs.google.com/spreadsheets/d/1iJDTR6pUdUj5UHCuwuZnz-ozIG0QwWEpun8C-yHjmEk/edit#gid=0)
+- [Lab Frame sensors](https://docs.google.com/spreadsheets/d/12Y85VpWkbLblPkNm32mU3hsVgKqCMDhEJuQSiBuFi4o/edit#gid=0)
 
 >keep in mind that 33 magnetic probes debiassed data in the 'record' got the values of hall probes signal with substracted bias mean values that come from tempreature and external noise, the signals from external coil/coils are not substracted. You can estimate them by usung file `coils_signal.m` from [this repository](https://github.com/Three-Meter-Geodynamo-Experiment/coils_signal)
 
