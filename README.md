@@ -26,6 +26,7 @@ The script should draw a plot with marked times so you can check if everything i
 10) Work with the data and have fun
 
 
+
 ## Information about the raw data
 *[Rotating computer pinout](https://docs.google.com/spreadsheets/d/1QK5RuoAz3mkU4ewodRvsoY-TPS1rK52lsijLz8kj0Iw/edit#gid=0)
 *[Control.log information](https://docs.google.com/spreadsheets/d/1iJDTR6pUdUj5UHCuwuZnz-ozIG0QwWEpun8C-yHjmEk/edit#gid=0)
