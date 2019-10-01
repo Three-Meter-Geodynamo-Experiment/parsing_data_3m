@@ -5,14 +5,14 @@ Scripts and functions necessary for working with 3M experiment data. Mostly Matl
 Here is an example how to get some data to work with:
 
 #### Preparing files and folders
-1) Download the folder with 3M data: *.daq and *.log files 
+1) Download the folder you are interested in with 3M data, you need '*.daq' and '*.log' files 
 2) Clone this repository to your local computer:
-`git clone https://github.com/Three-Meter-Geodynamo-Experiment/parsing_data_3m.git`
+```git clone https://github.com/Three-Meter-Geodynamo-Experiment/parsing_data_3m.git```
 3) Change hardcoded folder links to fit your architecture. Variables 'way' in files `grab_3mdata_chunks.m`, `import_control_magnet_logs.m` and in file `plotting_logs.m` need to fix the line with 'torque_data = '
 4) Add all folders and subfolders from this repository in PATH
 
 #### Figuring what parts of the day you are interested in
-5) Use `plotting_logs('mmddyy')` function to plot the variables during the day you are interested. And decide where are is your window of interest, for example from second 54000 to 61000.
+5) Use `plotting_logs('mmddyy')` function to plot the variables during the day you are interested. And decide where is your window of interest, for example from second 54000 to 61000.
 6) Use `get_t1_t2_from_exp.m` script: add there the day and the times from the step before. You will need to choose what is your parameter that determines the end of one experimental run from another. Is it magnetic field or rossby number? More manual available in the file. 
 As an output it will give you two vectors 't1' and 't2', first one corresponds to the times of the beginnings of the data and the second one for the endings.
 The script should draw a plot with marked times so you can check if everything is like you expected. Double check if during your time gaps all parameters are stable. 
