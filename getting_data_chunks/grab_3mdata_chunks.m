@@ -160,7 +160,7 @@ for file_i = 1:length(fileList)
             B_ext_std=std(data_magnet(imag1:imag2,3));
             
             % adding torque data from the sensor
-            try torque_data = importdata(['/data/3m/' day '/torque.dat' ]);
+            try torque_data = importdata([way 'torque.dat' ]);
                 tt = torque_data(:,1);      % torque times
                 t_d = torque_data(:,2);     % torque data
                 % index ot t1 and t2 
