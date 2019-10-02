@@ -13,7 +13,7 @@ end
 
 
 if 0   %   Set to 1 if you want to import torque data and modify plot part
-    torque_data = importdata(['/data/3m/' folder '/torque.dat' ]);
+    torque_data = importdata([way_to_folders() folder '/torque.dat' ]);
     tt = torque_data(:,1);     % torque time vector
     t_d = torque_data(:,2);    % tordue data vector
 end

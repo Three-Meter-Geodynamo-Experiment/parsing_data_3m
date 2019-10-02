@@ -25,7 +25,7 @@ end
 is_done = zeros(1,length(t1));
 
 % way to the folder with daq files
-way = ['/data/3m/' day '/'];
+way = [way_to_folders() day '/'];
 
 % list of daq files
 fileList = dir([way '/*.daq']);
@@ -45,6 +45,12 @@ if bias_defined             %
         % import data and time from the current daq file
         [data, time, abstime] = daqread([fileList(file_i).folder '/' fileList(file_i).name]);
 
+        % checking if the daq file we opened is the sphere_frame daq file, not
+        % some creepy acc file or ultrasonic blah blah blah
+        if size(data,2) < 40
+            continue
+        end
+        
         dossm(); % shift time with ssm
         time = time + ssm;
         
@@ -88,7 +94,14 @@ for file_i = 1:length(fileList)
     end
     disp(['Importing ' fileList(file_i).name])
     [data, time, abstime] = daqread([fileList(file_i).folder '/' fileList(file_i).name]);
-
+    
+    % checking if the daq file we opened is the sphere_frame daq file, not
+    % some creepy acc file or ultrasonic blah blah blah
+    if size(data,2) < 40
+        disp('Not a sphere frame daq')
+        continue
+    end
+    
     dossm();
     time = time + ssm;
     disp([ fileList(file_i).name ' t1= ' num2str(fix(time(1))) '  t2= ' num2str(fix(time(end)))]);
