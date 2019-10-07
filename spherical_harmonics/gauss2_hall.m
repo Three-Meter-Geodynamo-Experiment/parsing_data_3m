@@ -1,16 +1,21 @@
-function [B_31] = gauss2_hall(data_sph)
+function [B_31] = gauss2_hall(data_sph,locs)
 % Produces a signal of 31 surface hall probes if given the values of gauss
 % coefficients
-% Made to invert 
-locs = probepos();
+% Made to invert gcoeff3m()
+
+% Artur Perevalov
+if ~exist('locs', 'var')
+    locs = probepos();
+end
+
 T = size(data_sph,1);
 k_max = size(data_sph,2);
 l_max = -1+(1+size(data_sph,2))^0.5;
 
-B_31 = zeros(T,31);
+B_31 = zeros(T,length(locs));
 
 for t = 1:T
-    for i_pr = 1:31
+    for i_pr = 1:length(locs)
         r = locs(i_pr,1);
         theta= locs(i_pr,2);
         phi= locs(i_pr,3);
