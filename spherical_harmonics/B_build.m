@@ -1,8 +1,10 @@
 function Bsum = B_build(r,theta,phi)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Code to evaluate the magnetic field given gauss coefficients from gcoeff
+% Code to evaluate the magnetic field given gauss coefficients from
+% getgauss3m.m
 % Author: Sarah Burnett Oct 2019
-% 
+% Input: Scalars of desired r, theta, and phi
+% Output: Br-component of the magnetic field
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 load('gauss.mat')
 lmax = 4;
