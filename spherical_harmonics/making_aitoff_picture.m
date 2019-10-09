@@ -4,8 +4,8 @@
 
 %% Here are the gauss coeeficients array
 fake_gauss = zeros(1,24);
-fake_gauss(15) = 1;   % this one just adds something non-zero
-fake_gauss(1) = 5;
+fake_gauss(9) = 1;   % this one just adds something non-zero
+fake_gauss(19) = 5;
 
 %% creating coordinates to plot onto
 phi = (0:0.05:2*pi);
