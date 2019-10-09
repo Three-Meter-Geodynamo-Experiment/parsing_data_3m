@@ -11,7 +11,7 @@
 % Artur Perevalov September 2019
 
 %% control parameters
-folder = '101916';   % which folder to work with
+folder = '111815';   % which folder to work with
 t_start = 52000;         % from which time (default zero)
 t_end = 56000;     % up to this time (default midnight)
 % you also SHOULD choose which vector to use to determine times (rossby or

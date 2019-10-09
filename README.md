@@ -8,7 +8,7 @@ Here is an example how to get some data to work with:
 1) Download the folder you are interested in with 3M data, you need '*.daq' and '*.log' files 
 2) Clone this repository to your local computer:
 ```git clone https://github.com/Three-Meter-Geodynamo-Experiment/parsing_data_3m.git```
-3) Change hardcoded folder links to fit your architecture. Variables 'way' in files `grab_3mdata_chunks.m`, `import_control_magnet_logs.m` and in file `plotting_logs.m` need to fix the line with 'torque_data = '
+3) Change hardcoded folder link to fit your architecture in file 'getting_data_chunks/way_to_folder'
 4) Add all folders and subfolders from this repository in PATH
 
 #### Figuring what parts of the day you are interested in

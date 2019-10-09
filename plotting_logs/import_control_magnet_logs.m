@@ -2,7 +2,7 @@ function [data_control, data_magnet] = import_control_magnet_logs(folder)
 % import_control_magnet_logs fast import control.log and magnet.log
 %   going to data folder and importing logs
 %   Artur Perevalov September 2019
-way = ['/data/3m/' folder];         % change this folder if you have your own storage
+way = [way_to_folders() folder];         % change this folder if you have your own storage
 
 % Going to directories
 % setting up the name of control.log file with location
