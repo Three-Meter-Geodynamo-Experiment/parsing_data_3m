@@ -3,7 +3,9 @@ if ~(nargin==2)
 	error('Usage: gausscoeff = gcoeff3m(debiasedhalldata,probepos)');
 end
 
-probemask = ones(31,1);
+if ~exist('probemask','var')
+    probemask = ones(31,1);
+end
 
 %Title: getcoeff
 %Author: Matthew Adams
@@ -11,6 +13,9 @@ probemask = ones(31,1);
 %Last Modified: 20 Dec 2011
 %revamped by Henri-Claude Nataf, March 2012 to allow for more coefficients
 % (using the legendre polynomials of Matlab)
+
+% modified by Artur Perevalov 11/2019 to add external mask, and fixed back
+% because it was not working as I expected
 
 %Usage: getcoeff(debiasedhalldata,probepos,[probemask]), where 'debiasedhalldata is
 %assumed to have 41 columns, the first one being time and the remaining

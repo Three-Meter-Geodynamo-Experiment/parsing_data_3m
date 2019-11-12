@@ -190,11 +190,22 @@ for file_i = 1:length(fileList)
             ind_contr_log1 = find(tc > t1(i_t), 1, 'first');
             ind_contr_log2 = find(tc > t2(i_t), 1, 'first');
             control_log_data = data_control(ind_contr_log1:ind_contr_log2,:);
-            
+
+            %% adding ability to hide bad probes from 
             % evaluating gauss coefficents 
-%             data_m12_sph_h = gcoeff33(data_m12,probepos33);  % this one
-%             for doing all 33 probes
-            data_m12_sph_h = gcoeff3m(data_m12(:,1:31),probepos()); % this one for using only 31 probes
+%             data_m12_sph_h = gcoeff3m(data_m12,probepos33);  % this one
+%             for doing all 31 probes
+%             modified to add ability to include masks to forget about some
+%             probes if they are bad
+            if  day == '111815'
+                % this day is known of having problems in the first probe
+                probes_online = [2:31];   % choose the probes that are okay (the first one gives bad data)
+                probes_online_positions = probepos();
+                probes_online_positions = probes_online_positions(probes_online,:);
+                data_m12_sph_h = gcoeff3m(data_m12(:,probes_online),probes_online_positions); % this one for using only 31 probes
+            else
+                data_m12_sph_h = gcoeff3m(data_m12(:,1:31),probepos()); % this one for using only 31 probes
+            end
             
             % writing what collected
             record{i_t,3}{1,1} = [B_ext, t1(i_t), t2(i_t), B_ext_std];
