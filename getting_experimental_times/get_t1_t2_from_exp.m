@@ -11,9 +11,9 @@
 % Artur Perevalov September 2019
 
 %% control parameters
-folder = '081115';   % which folder to work with
-t_start = 55800;         % from which time (default zero)
-t_end = 61200;     % up to this time (default midnight)
+folder = '101112';   % which folder to work with
+t_start = 58630;         % from which time (default zero)
+t_end = 65920;     % up to this time (default midnight)
 % you also SHOULD choose which vector to use to determine times (rossby or
 % magnetic data etc), this is determined in the line that contains [t1, t2]
 %% BE CAREFULL, double check your times! sometimes other parameters could change while you are not expecting
