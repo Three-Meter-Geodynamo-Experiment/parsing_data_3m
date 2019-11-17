@@ -36,16 +36,19 @@ THi = data_control(:,6);      % temp heater in
 THo = data_control(:,9);      % temp heater out
 P_heat=data_control(:,5);     % temp heater in
 
+pip = data_control(:,10);     % pump inlet pressure
+pop = data_control(:,11);     % pump putlet pressure
+
 ro_r = (fi_r-fo_r)./fo_r;   % rossby real
 ro = (fi-fo)./fo;            % requested rossby
 mg = data_magnet(:,3);      % magnetic field
 
 
 figure(42)
-plot(tc,ro_r,'b',tm,mg/10,'r',tc,fo_r,'g',tc,fi_r,'c')
+plot(tc,ro_r,'b',tm,mg/10,'r',tc,fo_r,'g',tc,fi_r,'c',tc,fi,'k')
 % plot(tc,ro,'b',tm,mg/10,'r',tc,fo_r,'g',tc,fi,'c',tt, t_d/50000,'k')
 title(['Rossby, f_o, f_i, and Mag field on ' folder])
-legend('Ro, 1','Current, A/10','f_o, Hz','f_i, Hz', 'Location','northwest')
+legend('Ro, 1','Current, A/10','f_o, Hz','f_i_r, Hz','f_i req, Hz', 'Location','northwest')
 xlabel('Time in seconds since midnight')
 
 % saveas(gcf,[save_folder '102115_log.png'])
@@ -53,8 +56,8 @@ xlabel('Time in seconds since midnight')
 % Ek = 7e-7/2/3.14/3.95/1.03^2
 figure(43)
 title('Temperatures and heater power')
-plot(tc,THi, tc,THo, tc,P_heat,tc,T1,tc,T2)
-legend('Temp heater in','Temp heater out','Heater power','Na temp rotcomp', 'Na temp wireless','Location','southwest')
+plot(tc,THi, tc,THo, tc,P_heat,tc,T1,tc,T2,tc,pip,tc,pop)
+legend('Temp heater in','Temp heater out','Heater power','Na temp rotcomp', 'Na temp wireless','Pump inlet, psi','Pump outlet, psi','Location','southwest')
 
 xlabel('Time in seconds since midnight')
 
