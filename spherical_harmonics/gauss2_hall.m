@@ -12,6 +12,9 @@ T = size(data_sph,1);
 k_max = size(data_sph,2);
 l_max = -1+(1+size(data_sph,2))^0.5;
 
+% optimizing speed
+leg_pol = cell(l_max,size(locs,1));             % storing polynoms here
+%
 B_31 = zeros(T,length(locs));
 
 for t = 1:T
@@ -25,7 +28,14 @@ for t = 1:T
             if m < 0
                 continue
             end
-            Pl = legendre(l,cos(theta),'sch');
+            
+            if t == 1   
+                Pl = legendre(l,cos(theta),'sch');
+                leg_pol{l,i_pr} = Pl;
+            else
+%                 Pl = legendre(l,cos(theta),'sch');
+                Pl = leg_pol{l,i_pr};
+            end
             for i_m = 1:2:l
                 Pl(1+i_m)= -1*Pl(1+i_m);
             end
