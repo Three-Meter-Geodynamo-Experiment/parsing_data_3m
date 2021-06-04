@@ -3,9 +3,14 @@
 % REQUIRES m_map package https://www.eoas.ubc.ca/~rich/map.html#download
 
 %% Here are the gauss coeeficients array
-fake_gauss = zeros(1,24);
-fake_gauss(9) = 1;   % this one just adds something non-zero
-fake_gauss(19) = 5;
+% 
+fake_gauss = zeros(1,35);
+fake_gauss(25) = 1;   % this one just adds something non-zero
+% fake_gauss(19) = 5;
+% fake_gauss = record_stat_mag_ramp{1, 3}{1, 6}(5,:)  ;
+% cs = 0.9*coils_signal(60.9,1);
+% fake_data31 = record_stat_mag_ramp{12, 3}{1, 4}(301,1:31)-cs(1:31);
+% fake_gauss=gcoeff3m(fake_data31-0*mean(fake_data31),probepos());
 
 %% creating coordinates to plot onto
 phi = (0:0.05:2*pi);
@@ -38,8 +43,8 @@ for phi_i = 1:length(phi)
 end
 
 %% Plotting
-figure(1)
+figure()
 m_proj('Hammer-Aitoff','lat',[-90 90], 'lon',[-180 180])
 m_contourf(phi_deg,theta_deg,B_map','EdgeColor','None')
-
+colorbar;
 

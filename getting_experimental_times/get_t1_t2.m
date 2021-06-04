@@ -15,10 +15,10 @@ if ~exist('t1','var')
     t2 = time(end);
 end
 
-T_gap = 30;
+T_gap = 40;
 gap_points = find(time > time(100)+T_gap, 1, 'first')-100; 
-tolerance = 1/150;
-step = 5;
+tolerance = 1/1500;
+step = 3;
 
 if ~exist('range','var')
     data_srt= sort(data);

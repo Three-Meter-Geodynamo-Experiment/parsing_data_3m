@@ -1,6 +1,8 @@
 function [k] = lm2k(l,m)
-%UNTITLED12 Summary of this function goes here
-%   Detailed explanation goes here
+
+if abs(m) > l 
+    warning('something is wrong here, your |m|>l')
+end
 if m==0
     ki=0;
 elseif m>0

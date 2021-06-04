@@ -5,7 +5,7 @@ function [record] = grab_3mdata_chunks(day,t1,t2,tb1,tb2)
 % cell object: record 
 % manual for this is stored in "record_readme.mat"
 % Artur Perevalov September 2019
-
+r
 % requires 
 % import_control_magnet_logs()
 % dossm()
@@ -37,7 +37,7 @@ record = cell(length(t1),4);
 if bias_defined             % 
     for file_i = 1:length(fileList)     % swiping across daq files
 
-        if fileList(file_i).name == "acc.daq" || fileList(file_i).name == "heating.daq"  || fileList(file_i).name ==  "acc0.daq"
+        if fileList(file_i).name == "acc.daq" || fileList(file_i).name ==  "acc0.daq"  %|| fileList(file_i).name == "heating.daq" 
             continue        % if it is one of those files than heck it
         end
         disp(['Importing ' fileList(file_i).name ' and looking for bias'])

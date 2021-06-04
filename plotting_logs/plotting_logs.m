@@ -37,7 +37,10 @@ THo = data_control(:,9);      % temp heater out
 P_heat=data_control(:,5);     % temp heater in
 
 pip = data_control(:,10);     % pump inlet pressure
-pop = data_control(:,11);     % pump putlet pressure
+pop = data_control(:,11);     % pump outlet pressure
+
+oip = data_control(:,8);     % oil inlet pressure
+oop = data_control(:,7);     % oil outlet pressure
 
 ro_r = (fi_r-fo_r)./fo_r;   % rossby real
 ro = (fi-fo)./fo;            % requested rossby
@@ -56,8 +59,8 @@ xlabel('Time in seconds since midnight')
 % Ek = 7e-7/2/3.14/3.95/1.03^2
 figure(43)
 title('Temperatures and heater power')
-plot(tc,THi, tc,THo, tc,P_heat,tc,T1,tc,T2,tc,pip,tc,pop)
-legend('Temp heater in','Temp heater out','Heater power','Na temp rotcomp', 'Na temp wireless','Pump inlet, psi','Pump outlet, psi','Location','southwest')
+plot(tc,THi, tc,THo, tc,P_heat,tc,T1,tc,T2,tc,pip,tc,pop,tc,oip,tc,oop)
+legend('Temp heater in','Temp heater out','Heater power','Na temp rotcomp', 'Na temp wireless','Pump inlet, psi','Pump outlet, psi','Oil inlet, psi','Oil outlet, psi','Location','southwest')
 
 xlabel('Time in seconds since midnight')
 

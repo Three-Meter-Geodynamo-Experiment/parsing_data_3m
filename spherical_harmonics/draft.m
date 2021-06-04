@@ -1,16 +1,15 @@
 N = 50;
-dead_max = 14;
+dead_max = 7;
 err = zeros(dead_max,N);
 
 for dead_probes = 1:dead_max
 
-    for exp_i = 1:N
+    for exp_i = 0:N
 
-        g_c = rand(1,24);
+        g_c = randn(1,24);
 
         fake_data = gauss2_hall(g_c);
         fake_data = fake_data +1/100*rand(size(fake_data));
-
 
         probes_online = [dead_probes+1:31];   % choose the probes that are okay (the first one gives bad data)
         probes_online_positions = probepos();

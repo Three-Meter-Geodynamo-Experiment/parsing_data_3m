@@ -54,7 +54,7 @@ end;
  %lmax = input('Give maximum degree to invert for (l<=4) \n');
  %ncoef = lmax*(lmax+2); % (no monopole, l=0)
 %
-lmax = 4;
+lmax = 5;
 ncoef = lmax*(lmax+2);
 
 
