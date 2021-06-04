@@ -5,7 +5,7 @@ function [record] = grab_3mdata_chunks(day,t1,t2,tb1,tb2)
 % cell object: record 
 % manual for this is stored in "record_readme.mat"
 % Artur Perevalov September 2019
-r
+
 % requires 
 % import_control_magnet_logs()
 % dossm()
