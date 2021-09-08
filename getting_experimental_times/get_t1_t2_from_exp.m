@@ -11,10 +11,10 @@
 % Artur Perevalov September 2019
 
 %% control parameters
-folder = '042516';          % which folder to work with
-t_start = 56280;            % from which time (default zero)
-t_end = 60500;              % up to this time (default midnight)
-search_parameter = 2;              % which parameter to check (1-rossby, 2-mag field)
+folder = '100912';          % which folder to work with
+t_start = 56687;            % from which time (default zero)
+t_end = 64041;              % up to this time (default midnight)
+search_parameter = 3;              % which parameter to check (1-rossby, 2-mag field, 3 - inner rotation rate)
 % you also SHOULD choose which vector to use to determine times (rossby or
 % magnetic data etc), this is determined in the line that contains [t1, t2]
 %% BE CAREFULL, double check your times! sometimes other parameters could change while you are not expecting
@@ -63,6 +63,8 @@ if search_parameter == 1
     [t1, t2] = get_t1_t2(tc,ro,t_start,t_end);        % this one for rossby
 elseif search_parameter == 2
     [t1, t2] = get_t1_t2(tm,mg,t_start,t_end);            % this one for working with magnetic data
+elseif search_parameter == 3
+    [t1, t2] = get_t1_t2(tc,fi,t_start,t_end);        % this one for the inner sphere rotation rate
 end
 hold off 
 %%
