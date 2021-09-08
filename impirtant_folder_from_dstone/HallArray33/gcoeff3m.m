@@ -54,7 +54,7 @@ end;
  %lmax = input('Give maximum degree to invert for (l<=4) \n');
  %ncoef = lmax*(lmax+2); % (no monopole, l=0)
 %
-lmax = 5;
+lmax = 4;
 ncoef = lmax*(lmax+2);
 
 
@@ -103,8 +103,8 @@ for j=1:nprobes
         theta(i,1) = probepos(j,2);
         phi(i,1) = probepos(j,3);
         i = i + 1;
-    end;
-end;
+    end
+end
 
 
 % use r, theta, and phi to construct the basis functions
@@ -317,12 +317,3 @@ if (0 == 1)
 % ------------------------------
 
 end
-
-
-
-
-
-
-
-
-
