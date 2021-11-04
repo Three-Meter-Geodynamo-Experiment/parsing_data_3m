@@ -33,6 +33,13 @@ fileList = dir([way '/*.daq']);
 % predefining the output record variable
 record = cell(length(t1),4);
 
+%%
+if str2num(day(5:6)) > 20
+    channels = [7:41];
+else
+    channels = [12:44];
+end
+
 %% if the bias was defined lets go and find it
 if bias_defined             % 
     for file_i = 1:length(fileList)     % swiping across daq files
@@ -69,14 +76,14 @@ if bias_defined             %
             i_tb2 = find(time > tb2-1, 1, 'first');
             
             % crope the bias data from data
-            bias_data = data(i_tb1:i_tb2,12:44);
+            bias_data = data(i_tb1:i_tb2, channels);
             
             % evaluate the mean value
             bias = mean(bias_data,1);
             
             % get all the necessary parts of the bias data to write it
             % later in the record variable
-            [time_b_12, data_b_p12, data_b_m12, data_b_12] = data_chunk_tpmd(data,time,tb1+1,tb2-1,0*bias);
+            [time_b_12, data_b_p12, data_b_m12, data_b_12] = data_chunk_tpmd(data,time,tb1+1,tb2-1,0*bias,day);
 
             disp('Found bias, now working on data')
 %             '************' Now lets work on data ************'
@@ -151,7 +158,8 @@ for file_i = 1:length(fileList)
                 i_tb2 = find(time > tb2-1, 1, 'first');
                 
                 % define bias data nad bias
-                bias_data = data(i_tb1:i_tb2,12:44);
+                
+                bias_data = data(i_tb1:i_tb2,channels);
                 bias = mean(bias_data,1);
             end
             
@@ -163,7 +171,7 @@ for file_i = 1:length(fileList)
             record{i_t,4} = cell(1,2);      % for torque data;
             
             % cropping pieces of data
-            [time_12, data_p12, data_m12, data12] = data_chunk_tpmd(data,time,t1(i_t),t2(i_t),bias);
+            [time_12, data_p12, data_m12, data12] = data_chunk_tpmd(data,time,t1(i_t),t2(i_t),bias,day);
 
             % determining timing in mag data
             imag1 = find(data_magnet(:,1) > t1(i_t), 1, 'first');
@@ -203,6 +211,8 @@ for file_i = 1:length(fileList)
                 probes_online_positions = probepos();
                 probes_online_positions = probes_online_positions(probes_online,:);
                 data_m12_sph_h = gcoeff3m(data_m12(:,probes_online),probes_online_positions); % this one for using only 31 probes
+%             elseif day =='100912'
+%                 data_m12_sph_h = 0;
             else
                 data_m12_sph_h = gcoeff3m(data_m12(:,1:31),probepos()); % this one for using only 31 probes
             end
@@ -218,7 +228,7 @@ for file_i = 1:length(fileList)
 
             %  now dealing with bias data 
             if bias_defined == 0   % find the bias data part if it was not defined from the outside
-                [time_b_12, data_b_p12, data_b_m12, data_b_12] = data_chunk_tpmd(data,time,tb1+1,tb2-1,0*bias);
+                [time_b_12, data_b_p12, data_b_m12, data_b_12] = data_chunk_tpmd(data,time,tb1+1,tb2-1,0*bias,day);
             end
             
             % finding indexies of bias data in the magnet file
