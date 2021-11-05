@@ -11,11 +11,11 @@
 % Artur Perevalov September 2019
 
 %% control parameters
-folder = '110321';          % which folder to work with
-t_start = 55758;            % from which time (default zero)
-t_end = 64035;              % up to this time (default midnight)
-search_parameter = 3;              % which parameter to check (1-rossby, 2-mag field, 3 - inner rotation rate)
-range = 10;
+folder = '110521';          % which folder to work with
+t_start = 56560;            % from which time (default zero)
+t_end = 60152;              % up to this time (default midnight)
+search_parameter = 1;              % which parameter to check (1-rossby, 2-mag field, 3 - inner rotation rate)
+range = 5;
 % you also SHOULD choose which vector to use to determine times (rossby or
 % magnetic data etc), this is determined in the line that contains [t1, t2]
 %% BE CAREFULL, double check your times! sometimes other parameters could change while you are not expecting
@@ -53,15 +53,17 @@ legend('Ro, 1','Current, A/10','f_o, Hz','f_i, Hz','AutoUpdate','off', 'Location
 xlabel('Time in seconds since midnight')
 hold on
 % adding protection if user set up wrong time gaps
-if t_end > tm(end)
-    t_end = tm(end) - 1;
+if search_parameter == 2
+    if t_end > tm(end)
+        t_end = tm(end) - 1;
+    end
 end
 % if t_start < tm(1)
 %     t_start = tm(1) + 1;
 % end
 %% actually getting the times and plotting markers on the top of the plot above
 if search_parameter == 1
-    [t1, t2] = get_t1_t2(tc,ro,t_start,t_end);        % this one for rossby
+    [t1, t2] = get_t1_t2(tc,ro,t_start,t_end,range);        % this one for rossby
 elseif search_parameter == 2
     [t1, t2] = get_t1_t2(tm,mg,t_start,t_end);            % this one for working with magnetic data
 elseif search_parameter == 3

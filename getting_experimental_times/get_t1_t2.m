@@ -15,7 +15,7 @@ if ~exist('t1','var')
     t2 = time(end);
 end
 
-T_gap = 40;
+T_gap = 20;
 gap_points = find(time > time(100)+T_gap, 1, 'first')-100; 
 tolerance = 1/250;
 step = 3;
@@ -77,8 +77,8 @@ t_vect2 = fix(t_vect2);
 
 for i=1:length(t_vect1)
     
-    line([t_vect1(i) t_vect1(i)],[-range range],'color','b','linestyle','--')
-    line([t_vect2(i) t_vect2(i)],[-range range],'color','r','linestyle','--')
+    line([t_vect1(i) t_vect1(i)],[-100*range 100*range],'color','b','linestyle','--')
+    line([t_vect2(i) t_vect2(i)],[-100*range 100*range],'color','r','linestyle','--')
     text(t_vect1(i),0,['\uparrow' num2str(i)]) %creates label to select range later
 end
 

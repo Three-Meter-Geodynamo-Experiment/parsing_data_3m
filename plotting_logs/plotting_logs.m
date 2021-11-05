@@ -26,7 +26,11 @@ tm = data_magnet(:,1);
 angle = data_control(:,3);   
 fi =  data_control(:,14);        % inner freq
 fo =  data_control(:,20);        % oiter freq
-fo_r=data_control(:,19)/8.297;   % outer freq real
+if str2num(day(5:6)) < 20
+    fo_r=data_control(:,19)/8.297;   % outer freq real
+else
+    fo_r=data_control(:,19);   % outer freq real
+end
 fi_r=data_control(:,13);         % inner freq real
 
 tq = data_control(:,21);      % torque
