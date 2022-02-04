@@ -17,7 +17,7 @@ end
 
 T_gap = 20;
 gap_points = find(time > time(100)+T_gap, 1, 'first')-100; 
-tolerance = 1/250;
+tolerance = 1/5;
 step = 3;
 
 if ~exist('range','var')

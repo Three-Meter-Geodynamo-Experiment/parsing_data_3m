@@ -12,10 +12,18 @@ end
 [data_control, data_magnet] = import_control_magnet_logs(folder);
 
 
-if 0   %   Set to 1 if you want to import torque data and modify plot part
-    torque_data = importdata([way_to_folders() folder '/torque.dat' ]);
-    tt = torque_data(:,1);     % torque time vector
-    t_d = torque_data(:,2);    % tordue data vector
+if 1   %   Set to 1 if you want to import torque data and modify plot part
+    try
+        torque_data = importdata([way_to_folders() folder '/torque.dat' ]);
+        tt = torque_data(:,1);     % torque time vector
+        t_d = torque_data(:,2)*1130/1801990;    % tordue data vector
+        t_d = movmean(t_d,3*30);
+    catch ME
+        tt = [];
+        t_d= [];
+        warning('Couldnt get torque data');
+    end    
+    
 end
 
 % setting time arrays
@@ -26,7 +34,7 @@ tm = data_magnet(:,1);
 angle = data_control(:,3);   
 fi =  data_control(:,14);        % inner freq
 fo =  data_control(:,20);        % oiter freq
-if str2num(day(5:6)) < 20
+if str2num(folder(5:6)) < 20
     fo_r=data_control(:,19)/8.297;   % outer freq real
 else
     fo_r=data_control(:,19);   % outer freq real
@@ -52,8 +60,8 @@ mg = data_magnet(:,3);      % magnetic field
 
 
 figure(42)
-plot(tc,ro_r,'b',tm,mg/10,'r',tc,fo_r,'g',tc,fi_r,'c',tc,fi,'k')
-% plot(tc,ro,'b',tm,mg/10,'r',tc,fo_r,'g',tc,fi,'c',tt, t_d/50000,'k')
+% plot(tc,ro_r,'b',tm,mg/10,'r',tc,fo_r,'g',tc,fi_r,'c',tc,fi,'k')
+plot(tc,ro,'b',tm,mg/10,'r',tc,fo_r,'g',tc,fi,'c',tt, t_d/100,'k')
 title(['Rossby, f_o, f_i, and Mag field on ' folder])
 legend('Ro, 1','Current, A/10','f_o, Hz','f_i_r, Hz','f_i req, Hz', 'Location','northwest')
 xlabel('Time in seconds since midnight')

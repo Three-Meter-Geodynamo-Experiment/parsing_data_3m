@@ -11,11 +11,11 @@
 % Artur Perevalov September 2019
 
 %% control parameters
-folder = '110521';          % which folder to work with
-t_start = 56560;            % from which time (default zero)
-t_end = 60152;              % up to this time (default midnight)
-search_parameter = 1;              % which parameter to check (1-rossby, 2-mag field, 3 - inner rotation rate)
-range = 5;
+folder = '020322';          % which folder to work with
+t_start = 62025';            % from which time (default zero)
+t_end = 62713;              % up to this time (default midnight)
+search_parameter = 2;              % which parameter to check (1-rossby, 2-mag field, 3 - inner rotation rate)
+range = 30;
 % you also SHOULD choose which vector to use to determine times (rossby or
 % magnetic data etc), this is determined in the line that contains [t1, t2]
 %% BE CAREFULL, double check your times! sometimes other parameters could change while you are not expecting
@@ -32,7 +32,13 @@ tm = data_magnet(:,1);
 % setting variables
 fi =  data_control(:,14);        % inner freq
 fo =  data_control(:,20);        % outer freq
-fo_r=data_control(:,19)/8.297;   % outer freq real
+
+if str2num(folder(5:6)) < 20
+    fo_r=data_control(:,19)/8.297;   % outer freq real
+else
+    fo_r=data_control(:,19);   % outer freq real
+end
+% fo_r=data_control(:,19)/8.297;   % outer freq real
 fi_r=data_control(:,13);         % inner freq real
 
 tq = data_control(:,21);         % torque
@@ -65,11 +71,11 @@ end
 if search_parameter == 1
     [t1, t2] = get_t1_t2(tc,ro,t_start,t_end,range);        % this one for rossby
 elseif search_parameter == 2
-    [t1, t2] = get_t1_t2(tm,mg,t_start,t_end);            % this one for working with magnetic data
+    [t1, t2] = get_t1_t2(tm,mg,t_start,t_end,range);            % this one for working with magnetic data
 elseif search_parameter == 3
     [t1, t2] = get_t1_t2(tc,fi,t_start,t_end,range);        % this one for the inner sphere rotation rate
 end
 hold off 
 %%
 
-clear  data_control data_magnet tv tm fi fo fo_r fi_r tq T1 T2 ro mg tc t_end t_start ro_r
+clear  folder range search_parameter data_control data_magnet tv tm fi fo fo_r fi_r tq T1 T2 ro mg tc t_end t_start ro_r
