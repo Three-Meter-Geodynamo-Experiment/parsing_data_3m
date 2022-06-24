@@ -11,11 +11,11 @@
 % Artur Perevalov September 2019
 
 %% control parameters
-folder = '020322';          % which folder to work with
-t_start = 62025';            % from which time (default zero)
-t_end = 62713;              % up to this time (default midnight)
-search_parameter = 2;              % which parameter to check (1-rossby, 2-mag field, 3 - inner rotation rate)
-range = 30;
+folder = '021722';          % which folder to work with
+t_start = 58644;            % from which time (default zero)
+t_end =   62915;              % up to this time (default midnight)
+search_parameter = 1;              % which parameter to check (1-rossby, 2-mag field, 3 - inner rotation rate)
+range = 1;
 % you also SHOULD choose which vector to use to determine times (rossby or
 % magnetic data etc), this is determined in the line that contains [t1, t2]
 %% BE CAREFULL, double check your times! sometimes other parameters could change while you are not expecting

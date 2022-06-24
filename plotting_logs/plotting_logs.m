@@ -28,7 +28,11 @@ end
 
 % setting time arrays
 tc = data_control(:,1);
-tm = data_magnet(:,1);
+try
+    tm = data_magnet(:,1);
+catch ME
+    tm = [];
+end
 
 % setting variables
 angle = data_control(:,3);   
@@ -56,14 +60,18 @@ oop = data_control(:,7);     % oil outlet pressure
 
 ro_r = (fi_r-fo_r)./fo_r;   % rossby real
 ro = (fi-fo)./fo;            % requested rossby
-mg = data_magnet(:,3);      % magnetic field
+try
+    mg = data_magnet(:,3);      % magnetic field
+catch ME
+    mg = [];
+end
 
 
 figure(42)
 % plot(tc,ro_r,'b',tm,mg/10,'r',tc,fo_r,'g',tc,fi_r,'c',tc,fi,'k')
 plot(tc,ro,'b',tm,mg/10,'r',tc,fo_r,'g',tc,fi,'c',tt, t_d/100,'k')
 title(['Rossby, f_o, f_i, and Mag field on ' folder])
-legend('Ro, 1','Current, A/10','f_o, Hz','f_i_r, Hz','f_i req, Hz', 'Location','northwest')
+legend('Ro, 1','Current, A/10','f_o, Hz','f_i_r, Hz','Torque, Nm/100', 'Location','northwest')
 xlabel('Time in seconds since midnight')
 
 % saveas(gcf,[save_folder '102115_log.png'])
