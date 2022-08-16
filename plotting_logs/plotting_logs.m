@@ -18,7 +18,7 @@ if 1   %   Set to 1 if you want to import torque data and modify plot part
         tt = torque_data(:,1);     % torque time vector
         t_d = torque_data(:,2)*1130/1801990;    % tordue data vector
         t_d = movmean(t_d,3*30);
-    catch ME
+    catch ME   % if you can
         tt = [];
         t_d= [];
         warning('Couldnt get torque data');
@@ -31,7 +31,7 @@ tc = data_control(:,1);
 try
     tm = data_magnet(:,1);
 catch ME
-    tm = [];
+    tm = [NaN];
 end
 
 % setting variables
@@ -63,7 +63,7 @@ ro = (fi-fo)./fo;            % requested rossby
 try
     mg = data_magnet(:,3);      % magnetic field
 catch ME
-    mg = [];
+    mg = [NaN];
 end
 
 
@@ -89,6 +89,7 @@ xlabel('Time in seconds since midnight')
 
 %% Ruben annalisys (annalysis?) please comment if I forgot to do so. I love you all if you're reading
 % I actually hate you, Ruben. Artur
+
 
 % figure(2);scatter(ro1,bdip)
 % hold on

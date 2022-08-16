@@ -20,7 +20,7 @@ filename_control = [way  '/control.log'];
 filename_magnet  = [way  '/magnet.log'];
 
 % if there are logs
-if exist(filename_control, 'file') == 2 
+if exist(filename_control, 'file') == 2 && exist(filename_magnet, 'file') == 2
 
 % importing data 
 data_control = readmatrix(filename_control);
@@ -31,11 +31,8 @@ end
 % 1-time, 2:3 - Tna, 4-12 oil, 
 % IS 13-f_rep, 14-f_req, 15-torque, 16-power, 17-current, 18-status
 % OS 19-f_rep, 20-f_req, 21-torque, 22-power, 23-current, 24-status
-if exist(filename_magnet, 'file') == 2
-    data_magnet  = readmatrix(filename_magnet);
-else
-    data_magnet = NaN(3);
-end
+if && exist(filename_magnet, 'file') == 2
+data_magnet  = readmatrix(filename_magnet);
 %% magnet.log
 % 1-time, 2-?, 3-magnet data (current)
 
