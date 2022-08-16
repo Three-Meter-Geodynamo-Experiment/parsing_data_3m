@@ -2,7 +2,7 @@ function [] = plotting_logs(folder)
 % made to easily plot info from log files from 3M data folders
 % useful for plotting data like rotation rates, temperature, magnetic field
 % also torque if you need (check the torque data part with IF)
-% Artur Perevalov September 2019
+% Artur Perevalov August 2022
 
 
 if ~exist('folder', 'var')
